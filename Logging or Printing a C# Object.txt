@@ -1,0 +1,14 @@
+	logSplit = logSplit + " :: priceQueryRow.PriceQueryDateRule.StartQuoteMacro: ";
+        foreach (System.ComponentModel.PropertyDescriptor descriptor in System.ComponentModel.TypeDescriptor.GetProperties(priceQueryRow.PriceQueryDateRule.StartQuoteMacro))
+        {
+                string name = descriptor.Name;
+                object value = descriptor.GetValue(priceQueryRow.PriceQueryDateRule.StartQuoteMacro);
+        	logSplit = logSplit + ", Key: " + name + " Value: " + value;
+        }
+
+        logManager.WriteTraceLog(
+            "Deal Interim Billing Issue :: PriceQueryRow: " + priceQueryRow + " Deemed Dates: " + deemeDates + " PriceQueryDateRuleTemplate: " + pqDRT + " LogSplit: " + logSplit,
+            CommonConstants.ManageDealAgentModule,
+            CommonConstants.ServicesCatalog,
+            LogPriority.Verbose,
+            TraceLogCategory.ServiceAgent);
